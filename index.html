@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منشئ السيرة الذاتية</title>
+    <title>إنشاء سيرة ذاتية احترافية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>منشئ السيرة الذاتية</h1>
+        <h2>📜 إنشاء سيرة ذاتية</h2>
+        
+        <!-- ✅ نموذج إدخال البيانات -->
+        <form id="cvForm">
+            <div class="input-group">
+                <label>👤 الاسم الكامل:</label>
+                <input type="text" id="fullName" required>
+            </div>
 
-        <label>الصورة الشخصية:</label>
-        <input type="file" id="profilePic" accept="image/*">
+            <div class="input-group">
+                <label>💼 المسمى الوظيفي:</label>
+                <input type="text" id="jobTitle" required>
+            </div>
 
-        <label>الاسم الكامل:</label>
-        <input type="text" id="fullName" placeholder="أدخل اسمك">
+            <div class="input-group">
+                <label>📝 ملخص عنك:</label>
+                <textarea id="summary" required></textarea>
+            </div>
 
-        <label>المسمى الوظيفي:</label>
-        <input type="text" id="jobTitle" placeholder="مثال: مطور ويب">
+            <div class="input-group">
+                <label>📌 الخبرة:</label>
+                <textarea id="experience" required></textarea>
+            </div>
 
-        <label>نبذة عنك:</label>
-        <textarea id="summary" placeholder="اكتب نبذة قصيرة عنك"></textarea>
+            <div class="input-group">
+                <label>🎓 التعليم:</label>
+                <textarea id="education" required></textarea>
+            </div>
 
-        <label>المهارات:</label>
-        <input type="text" id="skills" placeholder="مثال: HTML, CSS, JavaScript">
+            <div class="input-group">
+                <label>💡 المهارات:</label>
+                <textarea id="skills" required></textarea>
+            </div>
 
-        <label>الخبرات:</label>
-        <textarea id="experience" placeholder="أدخل خبراتك العملية"></textarea>
+            <button type="submit">💾 حفظ السيرة الذاتية</button>
+        </form>
 
-        <button onclick="generatePDF()">تحميل السيرة الذاتية PDF</button>
+        <!-- ✅ عرض السيرة الذاتية بعد الحفظ -->
+        <div id="cvOutput" class="cv-card">
+            <h2>🖊 السيرة الذاتية المحفوظة</h2>
+            <p><strong>👤 الاسم:</strong> <span id="outputName"></span></p>
+            <p><strong>💼 الوظيفة:</strong> <span id="outputJob"></span></p>
+            <p><strong>📝 ملخص:</strong> <span id="outputSummary"></span></p>
+            <p><strong>📌 الخبرة:</strong> <span id="outputExperience"></span></p>
+            <p><strong>🎓 التعليم:</strong> <span id="outputEducation"></span></p>
+            <p><strong>💡 المهارات:</strong> <span id="outputSkills"></span></p>
+        </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- ✅ فوتر الحقوق -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025 | صنع بواسطة <span class="highlight">Dimitri</span> & <span class="highlight">Wick Studio</span></p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
