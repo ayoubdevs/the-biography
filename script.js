@@ -1,67 +1,42 @@
-function generatePDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+// ✅ عند إرسال النموذج، يتم حفظ البيانات في LocalStorage
+document.getElementById("cvForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // منع إعادة تحميل الصفحة
 
-    const fullName = document.getElementById("fullName").value;
-    const jobTitle = document.getElementById("jobTitle").value;
-    const summary = document.getElementById("summary").value;
-    const skills = document.getElementById("skills").value;
-    const experience = document.getElementById("experience").value;
-    const profilePic = document.getElementById("profilePic").files[0];
+    // ✅ جلب القيم من النموذج
+    const cvData = {
+        fullName: document.getElementById("fullName").value,
+        jobTitle: document.getElementById("jobTitle").value,
+        summary: document.getElementById("summary").value,
+        experience: document.getElementById("experience").value,
+        education: document.getElementById("education").value,
+        skills: document.getElementById("skills").value
+    };
 
-    // حفظ البيانات تلقائيًا في localStorage
-    localStorage.setItem("fullName", fullName);
-    localStorage.setItem("jobTitle", jobTitle);
-    localStorage.setItem("summary", summary);
-    localStorage.setItem("skills", skills);
-    localStorage.setItem("experience", experience);
+    // ✅ حفظ البيانات في LocalStorage
+    localStorage.setItem("cvData", JSON.stringify(cvData));
 
-    // إضافة بيانات إلى الـ PDF
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(22);
-    doc.text(fullName, 20, 20);
+    // ✅ تحديث العرض
+    displayCV();
 
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(16);
-    doc.text(jobTitle, 20, 30);
+    // ✅ تنبيه بحفظ البيانات
+    alert("✅ تم حفظ السيرة الذاتية بنجاح!");
+});
 
-    doc.setFontSize(14);
-    doc.text("نبذة:", 20, 40);
-    doc.setFontSize(12);
-    doc.text(summary, 20, 50, { maxWidth: 170 });
+// ✅ استرجاع البيانات المخزنة عند تحميل الصفحة
+function displayCV() {
+    const savedData = localStorage.getItem("cvData");
 
-    doc.setFontSize(14);
-    doc.text("المهارات:", 20, 80);
-    doc.setFontSize(12);
-    doc.text(skills, 20, 90, { maxWidth: 170 });
+    if (savedData) {
+        const cvData = JSON.parse(savedData);
 
-    doc.setFontSize(14);
-    doc.text("الخبرات:", 20, 110);
-    doc.setFontSize(12);
-    doc.text(experience, 20, 120, { maxWidth: 170 });
-
-    // إضافة صورة شخصية إذا تم تحميلها
-    if (profilePic) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            const img = new Image();
-            img.src = event.target.result;
-            img.onload = function () {
-                doc.addImage(img, 'JPEG', 150, 20, 40, 40);
-                doc.save("CV.pdf");
-            };
-        };
-        reader.readAsDataURL(profilePic);
-    } else {
-        doc.save("CV.pdf");
+        document.getElementById("outputName").textContent = cvData.fullName;
+        document.getElementById("outputJob").textContent = cvData.jobTitle;
+        document.getElementById("outputSummary").textContent = cvData.summary;
+        document.getElementById("outputExperience").textContent = cvData.experience;
+        document.getElementById("outputEducation").textContent = cvData.education;
+        document.getElementById("outputSkills").textContent = cvData.skills;
     }
 }
 
-// استرجاع البيانات المخزنة عند فتح الموقع
-window.onload = function () {
-    document.getElementById("fullName").value = localStorage.getItem("fullName") || "";
-    document.getElementById("jobTitle").value = localStorage.getItem("jobTitle") || "";
-    document.getElementById("summary").value = localStorage.getItem("summary") || "";
-    document.getElementById("skills").value = localStorage.getItem("skills") || "";
-    document.getElementById("experience").value = localStorage.getItem("experience") || "";
-};
+// ✅ تنفيذ عرض البيانات عند تحميل الصفحة
+window.onload = displayCV;
