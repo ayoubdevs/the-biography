@@ -1,30 +1,31 @@
+/* ✅ ضبط الخلفية */
 body {
-    font-family: Arial, sans-serif;
-    background: url('') no-repeat center center fixed;
+    font-family: 'Arial', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
-    text-align: center;
-    direction: rtl;
     color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* ✅ تصميم الحاوية الرئيسية */
 .container {
-    width: 50%;
-    margin: auto;
-    background: rgba(0, 0, 0, 0.8);
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    margin-top: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-h1 {
-    color: #f8d210;
+/* ✅ تصميم النموذج */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 label {
-    display: block;
-    text-align: right;
-    margin-top: 10px;
     font-weight: bold;
 }
 
@@ -32,21 +33,54 @@ input, textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-button {
-    margin-top: 20px;
-    background-color: #f8d210;
-    color: black;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
 }
 
+button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
 button:hover {
-    background-color: #ffc107;
+    background: #45a049;
+}
+
+/* ✅ تصميم كرت السيرة الذاتية */
+.cv-card {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* ✅ تصميم الفوتر */
+footer {
+    margin-top: 30px;
+    padding: 15px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    font-size: 1em;
+    color: white;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #4CAF50;
+    transition: 0.3s;
+}
+
+.highlight:hover {
+    color: #45a049;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
 }
