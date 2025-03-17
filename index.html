@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منشئ السيرة الذاتية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>منشئ السيرة الذاتية</h1>
+
+        <label>الصورة الشخصية:</label>
+        <input type="file" id="profilePic" accept="image/*">
+
+        <label>الاسم الكامل:</label>
+        <input type="text" id="fullName" placeholder="أدخل اسمك">
+
+        <label>المسمى الوظيفي:</label>
+        <input type="text" id="jobTitle" placeholder="مثال: مطور ويب">
+
+        <label>نبذة عنك:</label>
+        <textarea id="summary" placeholder="اكتب نبذة قصيرة عنك"></textarea>
+
+        <label>المهارات:</label>
+        <input type="text" id="skills" placeholder="مثال: HTML, CSS, JavaScript">
+
+        <label>الخبرات:</label>
+        <textarea id="experience" placeholder="أدخل خبراتك العملية"></textarea>
+
+        <button onclick="generatePDF()">تحميل السيرة الذاتية PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
